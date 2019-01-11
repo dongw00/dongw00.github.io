@@ -1,48 +1,30 @@
 ---
 layout: page
-title: Posts
-background: '/img/bg-post.jpg'
+title: Category
+background: '/img/background/category-bg.jpg'
 ---
 
-{% for post in paginator.posts %}
-<article class="post-preview">
-  <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-    <h2 class="post-title">{{ post.title }}</h2>
-    {% if post.subtitle %}
-    <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-    {% else %}
-    <h3 class="post-subtitle">
-      {{ post.excerpt | strip_html | truncatewords: 15 }}
-    </h3>
-    {% endif %}
-  </a>
-  <p class="post-meta">
-    Posted by {% if post.author %} {{ post.author }} {% else %}
-    {{ site.author }} {% endif %} on {{ post.date | date: '%B %d, %Y' }}
-  </p>
-</article>
+<div id="archives">
+  {% for category in site.categories %}
+  <div class="archive-group">
+    {% capture category_name %}{{ category | first }}{% endcapture %}
+    <div id="#{{ category_name | slugize }}"></div>
+    <p></p>
+    <h1 class="category-head" style="margin-bottom: 4%;">
+      {{ category_name }}
+    </h1>
+    <ul>
+      {% for post in site.categories[category_name] %}
+      <li>
+        <a href="{{ post.url }}" style="font-weight: 600;">{{ post.title }} </a>
+        <span
+          style="text-decoration: normal; font-weight: normal; color: #808080;"
+          >{{ post.date | date_to_string }}
+        </span>
+      </li>
+    </ul>
 
-<hr />
-
-{% endfor %}
-
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-
-<div class="clearfix">
-  {% if paginator.previous_page %}
-  <a
-    class="btn btn-primary float-left"
-    href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"
-    >&larr; Newer<span class="d-none d-md-inline"> Posts</span></a
-  >
-  {% endif %} {% if paginator.next_page %}
-  <a
-    class="btn btn-primary float-right"
-    href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"
-    >Older<span class="d-none d-md-inline"> Posts</span> &rarr;</a
-  >
-  {% endif %}
+    {% endfor %}
+  </div>
+  {% endfor %}
 </div>
-
-{% endif %}

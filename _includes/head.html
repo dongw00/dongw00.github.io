@@ -1,19 +1,7 @@
 <head>
   <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
-
-  <title>
-    {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }} {%
-    else %}{{ site.title | escape }}{% endif %}
-  </title>
-  <!-- Naver webmaster -->
-  <meta
-    name="naver-site-verification"
-    content="863f31bf2465c8c619e77109427b4f3cca869c42"
-  />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
     content="{{
@@ -25,6 +13,20 @@
         | escape
     }}"
   />
+
+  <meta property="og:title" content="{{ page.title }}" />
+  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="og:type" content="{{ site.type }}" />
+  <meta property="og:url" content="{{ page.url }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <meta property="og:image" content="{{ page.header - img }}" />
+
+  <title>
+    {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }} {%
+    else %}{{ site.title | escape }}{% endif %}
+  </title>
+  <!-- Naver webmaster -->
+
   <link
     rel="stylesheet"
     href="{{ '/assets/vendor/bootstrap/css/bootstrap.min.css' | relative_url }}"
@@ -46,18 +48,5 @@
     title="{{ site.title | escape }}"
     href="{{ '/feed.xml' | relative_url }}"
   />
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=UA-121949224-3"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-121949224-3');
-  </script>
+  {% feed_meta %}
 </head>

@@ -5,10 +5,18 @@ author: dongw00
 baseurl: '/'
 url: 'http://dongw00.github.io'
 
+categories: [Cryptograpy]
+
 # Social Profiles
 # twitter_username:  dongw00
+# stackoverflow_username: dongw00
 github_username: dongw00
 facebook_username: dongwoo0428
+# linkedin_username: dongw00
+
+# disqus
+disqus_url: https://disqus.com/by/dongwooseo/
+disqus_id: dongw00
 
 # used to estimate reading time
 wpm: 150

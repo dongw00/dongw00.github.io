@@ -23,10 +23,21 @@ layout: default
             {% if page.subtitle %}
             <h2 class="subheading">{{ page.subtitle }}</h2>
             {% endif %}
-            <span class="meta"
-              >Posted by <a href="#">dongw00</a> on
-              {{ page.date | date: '%B %d, %Y' }}</span
-            >
+            <span class="meta" style="margin-top:0.5em;"
+              >Posted by {{ page.author }} on
+              {{ page.date | date: '%A, %B %-d, %Y' }}
+            </span>
+            <span class="meta" style="margin-top:0.5em;">
+              Category:
+              <a href="/category"
+                ><i class="fa fa-tag"></i> {{ page.categories }}</a
+              >
+            </span>
+            <span class="meta" style="margin-top:0.5em;">
+              {% assign minutes = content | number_of_words | divided_by:
+              site.wpm %} <i class="fa fa-clock-o"></i>&nbsp;{% if minutes == 0
+              %}{% assign minutes = 1 %}{% endif %} {{ minutes }} minute read
+            </span>
           </div>
         </div>
       </div>
@@ -36,8 +47,8 @@ layout: default
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        {{ content }}
-
+        {{ content }} <br />
+        {% if page.comments %} {% include disqus.html %} {% endif %} <br />
         <hr />
 
         <div class="clearfix">
