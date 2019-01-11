@@ -3,7 +3,7 @@ layout: post
 title: '블록체인을 위한 암호학 시리즈(1) - DES'
 subtitle: '암호학 - DES'
 categories: Cryptography
-background: 'img/01/01-01.png'
+background: '/img/01/01-01.png'
 tags: Cryptography
 comments: true
 ---
