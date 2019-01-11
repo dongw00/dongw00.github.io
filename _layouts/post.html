@@ -3,7 +3,7 @@ layout: default
 ---
 
 <!-- math -->
-{ % if page.use_math % } { % include mathjax.html % } { % endif % }
+{% if page.use_math %} {% include mathjax.html %} {% endif %}
 
 <!-- Page Header -->
 {% if page.background %}
