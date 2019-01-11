@@ -10,8 +10,12 @@ url: 'http://dongw00.github.io'
 github_username: dongw00
 facebook_username: dongwoo0428
 
+# used to estimate reading time
+wpm: 150
+
 # Build settings
 markdown: kramdown
+highlighter: rouge
 paginate: 10
 paginate_path: '/posts/page:num/'
 plugins:

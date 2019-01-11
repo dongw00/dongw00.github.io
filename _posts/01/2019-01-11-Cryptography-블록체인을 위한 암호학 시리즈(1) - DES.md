@@ -3,8 +3,7 @@ layout: post
 title: '블록체인을 위한 암호학 시리즈(1) - DES'
 subtitle: '암호학 - DES'
 categories: Cryptography
-image: 'img/01/01-01.png'
-header-img: 'img/01/01-01.png'
+background: 'img/01/01-01.png'
 tags: Cryptography
 comments: true
 ---
@@ -150,7 +149,7 @@ Round-key Generator에서 Round key를 생성은 3단계로 이루어진다.
 
 아무튼 1998년에 DES공격장치가 **Brutal Force Attack(무차별 공격)**방식으로 2일만에 암호를 탈취당했으니 현재는 사용하지 말아야 할 암호이지만 오랜시간 쓰였던 암호이었던 만큼 강화된 다중 DES (ex, 3-DES)를 사용하는 곳이 많으므로 (비용문제 등으로) 알아두는 것이 좋을 듯 하다.
 
-**참고자료**
+**참고자료**<br />
 [Data Encryption Standard](https://www.tutorialspoint.com/cryptography/data_encryption_standard.htm)
 
 [박승철의정보보호론제32-11강 대칭키암호화](https://www.youtube.com/watch?v=dFb2ezWDO38)
