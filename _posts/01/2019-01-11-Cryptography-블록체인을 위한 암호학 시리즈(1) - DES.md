@@ -5,6 +5,7 @@ subtitle: '암호학 - DES'
 categories: Cryptography
 background: '/img/01/01-01.png'
 tags: Cryptography
+use_math: true
 comments: true
 ---
 
@@ -76,7 +77,7 @@ P-box(Permutation box)라고 부르는데 특히 이 과정에서는 **암호화
 
 ## Round Function
 
-실제 암호화는 이 과정에서 일어난다.
+실제 암호화는 이 과정에서 일어난다.<br>
 $$L_x = R_{x-1}$$
 $$R_x = L_{x-1} \oplus \!\, F(R_{x-1}, K_x)$$
 
