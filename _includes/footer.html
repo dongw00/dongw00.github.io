@@ -1,6 +1,6 @@
 <!-- Footer -->
 
-<hr>
+<hr />
 
 <footer>
   <div class="container">
@@ -16,8 +16,7 @@
               </span>
             </a>
           </li>
-          {% endif %}
-          {% if site.facebook_username %}
+          {% endif %} {% if site.facebook_username %}
           <li class="list-inline-item">
             <a href="https://www.facebook.com/{{ site.facebook_username }}">
               <span class="fa-stack fa-lg">
@@ -26,8 +25,7 @@
               </span>
             </a>
           </li>
-          {% endif %}
-          {% if site.github_username %}
+          {% endif %} {% if site.github_username %}
           <li class="list-inline-item">
             <a href="https://github.com/{{ site.github_username }}">
               <span class="fa-stack fa-lg">
@@ -38,7 +36,9 @@
           </li>
           {% endif %}
         </ul>
-        <p class="copyright text-muted">Copyright &copy; {{ site.author }} {{ 'now' | date: "%Y" }}</p>
+        <p class="copyright text-muted">
+          Copyright &copy; {{ site.author }} {{ 'now' | date: '%Y' }}
+        </p>
       </div>
     </div>
   </div>

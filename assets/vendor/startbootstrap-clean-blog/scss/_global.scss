@@ -1,18 +1,8 @@
-@font-face {
-  font-family: IropkeBatangM;
-  src: url(/assets/fonts/IropkeBatangM.woff);
-}
-
+// Global styling for this template
 body {
-  font: $font-weight-default #{$font-size-default}/#{$line-height-default}
-    $base-font-family;
+  font-size: 20px;
   color: $gray-900;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-feature-settings: 'kern' 1;
-  -moz-font-feature-settings: 'kern' 1;
-  -o-font-feature-settings: 'kern' 1;
-  font-feature-settings: 'kern' 1;
-  font-kerning: normal;
+  @include serif-font;
 }
 
 p {
@@ -30,6 +20,7 @@ h4,
 h5,
 h6 {
   font-weight: 800;
+  @include sans-serif-font;
 }
 
 a {

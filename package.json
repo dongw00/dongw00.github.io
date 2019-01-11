@@ -1,0 +1,36 @@
+{
+  "title": "dongw00 blog",
+  "name": "dongw00",
+  "version": "1.0.0",
+  "description": "Original Clean Blog",
+  "keywords": [
+    "css",
+    "sass",
+    "html",
+    "responsive",
+    "theme",
+    "template"
+  ],
+  "homepage": "https://dongw00.github.io",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dongw00.github.io.git"
+  },
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.6",
+    "startbootstrap-clean-blog": "^4.1.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-header": "^2.0.7",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1"
+  }
+}

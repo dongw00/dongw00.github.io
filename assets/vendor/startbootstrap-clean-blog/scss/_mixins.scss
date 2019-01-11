@@ -1,5 +1,10 @@
 // Mixins
 // Bootstrap Button Variant
+@font-face {
+  font-family: IropkeBatangM;
+  src: url(/assets/fonts/IropkeBatangM.woff);
+}
+
 @mixin button-variant($color, $background, $border) {
   color: $color;
   border-color: $border;
@@ -59,4 +64,10 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+@mixin serif-font() {
+  font-family: 'IropkeBatangM', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+@mixin sans-serif-font() {
+  font-family: 'IropkeBatangM', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
