@@ -121,7 +121,7 @@ $$R_x = L_{x-1} \oplus \!\, F(R_{x-1}, K_x)$$
 
 확장된 48bit와 Round-key Generator에서 만든 Round key와 XOR을 한 결과 값 48bit는 S-box라는 곳에서 Compression(압축)이 일어난다.
 
-![](/img/01/01-08.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Data_Encription_Standard_Flow_Diagram.svg/1024px-Data_Encription_Standard_Flow_Diagram.svg.png)
 
 위 그림에서 S1~S8부분이 S-box내부의 그림이다.
 
@@ -163,6 +163,6 @@ Round-key Generator에서 Round key를 생성은 3단계로 이루어진다.
 **참고자료**<br />
 [Data Encryption Standard](https://www.tutorialspoint.com/cryptography/data_encryption_standard.htm)
 
-[박승철의정보보호론제32-11강 대칭키암호화](https://www.youtube.com/watch?v=dFb2ezWDO38)
+[박승철의정보보호론 제32-11강 대칭키암호화](https://www.youtube.com/watch?v=dFb2ezWDO38)
 
 [CS480 Cryptography and Information Security - ppt download](https://slideplayer.com/slide/11006182/)

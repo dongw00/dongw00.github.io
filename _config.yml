@@ -17,8 +17,10 @@ facebook_username: dongwoo0428
 # disqus
 disqus: dongw00-1
 
+permalink: /:title
+
 # used to estimate reading time
-wpm: 150
+wpm: 70
 
 # Build settings
 markdown: kramdown
