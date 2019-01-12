@@ -11,7 +11,6 @@ comments: true
 
 # DES - 소스분석
 
-<br />
 - [블록체인을 위한 암호학 시리즈(1) - DES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%95%94%ED%98%B8%ED%95%99-%EC%8B%9C%EB%A6%AC%EC%A6%88(1)-DES>)
 
 이전 포스팅에서 DES에 대해 살펴보았는데 이론적으로만 배우니 와닿지 않아서 소스코드를 분석을 해본다면 구체적으로 어떻게 동작이 될지해서 공부해보았다.
@@ -24,13 +23,13 @@ comments: true
 
 ```java
 public static byte[] encrypt(byte[] msg, byte[] key) {
-	byte[] cipherText = new byte[msg.length];
+    byte[] cipherText = new byte[msg.length];
 
-  /* 8byte(64bit) 블록단위로 암호화 */
-  for (int i=0; i < msg.length; i += 8) {
-  	encryptBlock(msg, i, cipherText, key);
-  }
-  return cipherText;
+    /* 8byte(64bit) 블록단위로 암호화 */
+    for (int i=0; i < msg.length; i += 8) {
+      encryptBlock(msg, i, cipherText, key);
+    }
+    return cipherText;
 }
 ```
 
@@ -45,11 +44,11 @@ public static byte[] encrypt(byte[] msg, byte[] key) {
 
 ```java
 public static void encryptBlock(byte[] msg, int msgOffset,
-	byte[] cipherText, int cipherTextOffset, byte[] key) {
-  long m = getLongFromBytes(msg, msgOffset);
-  long k = getLongFromBytes(key, 0);
-  long c = encryptBlock(m, k);
-  getBytesFromLong(cipherText, cipherTextOffset, c);
+    byte[] cipherText, int cipherTextOffset, byte[] key) {
+    long m = getLongFromBytes(msg, msgOffset);
+    long k = getLongFromBytes(key, 0);
+    long c = encryptBlock(m, k);
+    getBytesFromLong(cipherText, cipherTextOffset, c);
 }
 ```
 
@@ -59,26 +58,25 @@ public static void encryptBlock(byte[] msg, int msgOffset,
 
 ```java
 public static long encryptBlock(long m, long key) {
-	long ip = IP(m);  // Initial Permutation 수행
-	long subkeys[] = createSubkeys(key);  //16개 subkey 생성
+    long ip = IP(m);  // Initial Permutation 수행
+    long subkeys[] = createSubkeys(key);  //16개 subkey 생성
 
-  /* 32bit 값을 16bit 좌, 우 반으로 나눈다. */
-  int l = (int)(ip >> 32);
-  int r = (int)(ip & 0xFFFFFFFFL);
+    /* 32bit 값을 16bit 좌, 우 반으로 나눈다. */
+    int l = (int)(ip >> 32);
+    int r = (int)(ip & 0xFFFFFFFFL);
 
-  /* 16번 Round Function 수행 */
-  for (int i = 0; i < 16; i++) {
-  	int previous_l = l;
-  	l = r;
-  	/* 이 부분은 아래설명 */
-  	r = previous_l ^ feistel(r, subkeys[i]);
-  }
+    /* 16번 Round Function 수행 */
+    for (int i = 0; i < 16; i++) {
+        int previous_l = l;
+        l = r;
+        /* 이 부분은 아래설명 */
+        r = previous_l ^ feistel(r, subkeys[i]);
+    }
+    // 16번 Round Function 수행한 결과 값의 좌, 우 32bit를 swap 합친다.
+    long rl = (r & 0xFFFFFFFFL) << 32 | (l & 0xFFFFFFFFL);
+    long fp = FP(rl);  // Final Permutation 수행
 
-  // 16번 Round Function 수행한 결과 값의 좌, 우 32bit를 swap 합친다.
-  long rl = (r & 0xFFFFFFFFL) << 32 | (l & 0xFFFFFFFFL);
-  long fp = FP(rl);  // Final Permutation 수행
-
-  return fp;  // 암호화된 결과값을 반환
+    return fp;  // 암호화된 결과값을 반환
 }
 ```
 
@@ -89,16 +87,16 @@ public static long encryptBlock(long m, long key) {
 
 ```java
 private static int feistel(int r, /* 48 bits */ long subkey) {
-	long e = E(r);  // 1. expansion(확장)
-	long x = e ^ subkey;  // 2. key mixing(XOR)
-	int dst = 0;  // 3. substitution(S-box연산)
-	for (int i = 0; i < 8; i++) {
-		dst >>>= 4;
-		int s = S(8 - i, (byte) (x & 0x3F));
-		dst |= s << 28;
-		x >>= 6;
-	}
-	return P(dst);  // 4. permutation
+    long e = E(r);  // 1. expansion(확장)
+    long x = e ^ subkey;  // 2. key mixing(XOR)
+    int dst = 0;  // 3. substitution(S-box연산)
+    for (int i = 0; i < 8; i++) {
+        dst >>>= 4;
+        int s = S(8 - i, (byte) (x & 0x3F));
+        dst |= s << 28;
+        x >>= 6;
+    }
+    return P(dst);  // 4. permutation
 }
 ```
 
@@ -111,31 +109,31 @@ DES의 핵심부분이다. 아래 그림을 보면 더 쉽게 이해할 수 있�
 
 ```java
 private static long[] createSubkeys(long key) {
-  long subkeys[] = new long[16];
+    long subkeys[] = new long[16];
 
-  key = PC1(key);  // 대칭 키 PC1 Permutation 수행
+    key = PC1(key);  // 대칭 키 PC1 Permutation 수행
 
-  /* 28bit 좌, 우를 나눈다 */
-  int c = (int)(key >> 28);
-  int d = (int)(key & 0x0FFFFFFF);
+    /* 28bit 좌, 우를 나눈다 */
+    int c = (int)(key >> 28);
+    int d = (int)(key & 0x0FFFFFFF);
 
-  /* 16개 subkey를 생성한다. */
-  for (int i = 0; i < 16; i++) {
-  	/* 28bit 값을 순환시킨다. */
-  	if (rotations[i] == 1) {
-  		/* 1bit씩 순환시킨다. */
-  		c = ((c << 1) & 0x0FFFFFFF) | (c >> 27);
-  		d = ((d << 1) & 0x0FFFFFFF) | (d >> 27);
-  	} else {
-  		/* 2bit씩 순환시킨다. */
-  			c = ((c << 2) & 0x0FFFFFFF) | (c >> 26);
-  			d = ((d << 2) & 0x0FFFFFFF) | (d >> 26);
-  	}
-  	// 나눴던 key 쌍을 합친다.
-  	long cd = (c & 0xFFFFFFFFL) << 28 | (d & 0xFFFFFFFFL);
-  	subkeys[i] = PC2(cd);
-  }
-  return subkeys;  // 48bit subkey
+    /* 16개 subkey를 생성한다. */
+    for (int i = 0; i < 16; i++) {
+        /* 28bit 값을 순환시킨다. */
+        if (rotations[i] == 1) {
+            /* 1bit씩 순환시킨다. */
+            c = ((c << 1) & 0x0FFFFFFF) | (c >> 27);
+            d = ((d << 1) & 0x0FFFFFFF) | (d >> 27);
+        } else {
+            /* 2bit씩 순환시킨다. */
+            c = ((c << 2) & 0x0FFFFFFF) | (c >> 26);
+            d = ((d << 2) & 0x0FFFFFFF) | (d >> 26);
+        }
+        // 나눴던 key 쌍을 합친다.
+        long cd = (c & 0xFFFFFFFFL) << 28 | (d & 0xFFFFFFFFL);
+        subkeys[i] = PC2(cd);
+    }
+    return subkeys;  // 48bit subkey
 }
 ```
 
@@ -152,15 +150,15 @@ private static long[] createSubkeys(long key) {
 
 ```java
 public static boolean test(byte[] message, byte[] expected, byte[] key) {
-  System.out.println("Test #" + (++testCount) + ":");
-  System.out.println("\tmessage:  " + hex(message));
-  System.out.println("\tkey:      " + hex(key));
-  System.out.println("\texpected: " + hex(expected));
-  byte[] received = encrypt(message, key);
-  System.out.println("\treceived: " + hex(received));
-  boolean result = Arrays.equals(expected, received);
-  System.out.println("\tverdict: " + (result ? "PASS" : "FAIL"));
-  return result;
+    System.out.println("Test #" + (++testCount) + ":");
+    System.out.println("\tmessage:  " + hex(message));
+    System.out.println("\tkey:      " + hex(key));
+    System.out.println("\texpected: " + hex(expected));
+    byte[] received = encrypt(message, key);
+    System.out.println("\treceived: " + hex(received));
+    boolean result = Arrays.equals(expected, received);
+    System.out.println("\tverdict: " + (result ? "PASS" : "FAIL"));
+    return result;
 }
 ```
 
@@ -168,7 +166,7 @@ DES 테스트에서 사용자가 **입력한 평문**과 **서버에 암호문**
 
 ```java
 public static void main(String[] args) {
-  test(parseBytes("0123456789ABCDEF"), parseBytes("85E813540F0AB405"),parseBytes("133457799BBCDFF1"));
+    test(parseBytes("0123456789ABCDEF"), parseBytes("85E813540F0AB405"),parseByte    ("133457799BBCDFF1"));
 }
 ```
 
