@@ -20,7 +20,7 @@ disqus: dongw00-1
 permalink: /:title
 
 # used to estimate reading time
-wpm: 70
+wpm: 50
 
 # Build settings
 markdown: kramdown
