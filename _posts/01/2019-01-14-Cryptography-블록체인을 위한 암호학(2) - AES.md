@@ -123,3 +123,10 @@ PKCS#7 알고리즘은 byte단위로 덧붙이며, 부족한 byte수만큼 n개�
 ## 현재
 
 세계적으로 하드웨어에서나 소프트웨어에서 널리 쓰고있는 암호화 기법이다. 현재까지는 알려진 공격방법이 없기때문에 안전하고, AES는 key 길이를 128/192/256bit 여러가지 쓸 수 있기때문에 장점을 가지고 있다.
+
+<br />
+
+**참고자료**<br />
+[Wikipedia - AES](https://ko.wikipedia.org/wiki/%EA%B3%A0%EA%B8%89_%EC%95%94%ED%98%B8%ED%99%94_%ED%91%9C%EC%A4%80)
+
+[Advanced Encryption Standard](https://www.tutorialspoint.com/cryptography/advanced_encryption_standard.htm)
