@@ -19,6 +19,8 @@ comments: true
 
 > 해당코드는 java언어로 작성되었습니다.
 
+<br />
+
 ## 메시지를 키와 함께 암호화
 
 ```java
@@ -38,6 +40,7 @@ public static byte[] encrypt(byte[] msg, byte[] key) {
 구현된 함수는 `ECB`(Electronic Code Block)모드로 사용된다.
 
 각 64bit마다 동일한 키로 암호화된다.
+
 <br />
 
 ## 64bit block의 평문을 암호화
@@ -81,6 +84,7 @@ public static long encryptBlock(long m, long key) {
 ```
 
 이전 포스팅에서 설명했던 것과 같이 왼쪽 bit는 Round Function에 의해 XOR되어 암호화가 되지만 오른쪽 bit는 단지 swap이 되기때문에 새로운 좌, 우 bit를 변수 l, r로 표현했다.
+
 <br />
 
 ## Feistel function
@@ -103,6 +107,7 @@ private static int feistel(int r, /* 48 bits */ long subkey) {
 DES의 핵심부분이다. 아래 그림을 보면 더 쉽게 이해할 수 있을 것이다.
 
 ![](/img/01/01-06.png)
+
 <br />
 
 ## Subkey 생성과정
@@ -144,6 +149,7 @@ private static long[] createSubkeys(long key) {
 > 64bit key를 받지만 8bit는 오류검사 parity bit이기 때문에 실제 DES에서 56bit를 사용한다.
 
 1, 2, 9, 16 Round에서는 1bit 왼쪽 순환이동을 하고 나머지 Round에서는 2bit씩 순환이동을 한다.
+
 <br />
 
 ## DES 암호화 Test Function
@@ -175,6 +181,7 @@ public static void main(String[] args) {
 ![](/img/01/01-10.png)
 
 정상적으로 작동한다.
+
 <br />
 
 ## 기타 설정 값들
@@ -227,6 +234,7 @@ private static final byte[] P = { };
 
 Straight P-box 과정에서 사용하는 Table이다.
 
+
 ## Sub-key Generation
 
 **PC1 Permutation**
@@ -245,6 +253,7 @@ private static final byte[] PC2 = { };
 ```
 
 `PC2 Permutation` Compression P-box라고 보면된다. 순환 연산 이후 **48bit의 Subkey**를 받게된다.
+
 
 ## Rotations
 
