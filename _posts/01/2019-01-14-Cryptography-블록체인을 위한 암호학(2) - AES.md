@@ -89,8 +89,6 @@ AES 알고리즘은 안정성을 제공하기위해 `대치`(Substitution), `치
 1. **SubBytes (Byte Substitution)**
    16byte입력에서 각 byte를 4bit씩 2개의 16진수로 계산하여 왼쪽 4bit를 S-box의 행, 오른쪽 4bit를 열로 S-box Table을 읽어서 변환한다.
 
-> DES와 비슷하게 대치(Substitution)을 사용하지만 이때 압축(Compression)은 일어나지 않는다.
-
 ![](/img/01/01-20.png)
 
 2. **ShiftRows**
