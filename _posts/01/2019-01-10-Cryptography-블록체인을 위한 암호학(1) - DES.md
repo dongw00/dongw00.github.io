@@ -19,6 +19,7 @@ comments: true
 블록체인을 배우면서 만났던 멘토분께서 암호학을 먼저 공부하는 것이 좋다는 말씀을 듣고 공부한 내용들을 정리하였다.
 
 <br />
+
 ## DES (Data Encryption Standard)
 
 [DES](https://namu.wiki/w/DES)는 IBM에서 고안되어 NIST가 미국 표준암호 알고리즘으로 지정한 `대칭 키 블록 암호화` 기법이다.
@@ -26,6 +27,7 @@ comments: true
 > 현재는 평범한 PC로도 손쉽게 해독이 가능하기 때문에, 기존에 암호화된 문서를 복호화하는 용도로만 사용을 하고 신규 암호화 문서를 생성하는데는 절대로 사용하지 말 것을 권장하는 암호화 알고리즘이다.
 
 그런데 왜 DES를 공부하냐면 DES의 암호화 알고리즘의 근간인 Feistel Network를 공부하는데 의미가 있다.
+
 <br />
 
 ## 개요
@@ -40,6 +42,7 @@ DES는 대칭 키 알고리즘에 속하면서 `블록단위 암호화 방식`�
 그런데 파이스텔 네트워크(Feistel Network)라는 것이 무엇일까?
 
 <br />
+
 ## **Feistel Network란?**
 
 블록단위 암호화 방식의 일종이며, 암호화시 특정 계산 함수의 반복으로 이루어지는 것을 말한다.
@@ -49,6 +52,7 @@ DES는 대칭 키 알고리즘에 속하면서 `블록단위 암호화 방식`�
 > 블록단위 암호화라고해서 모두가 Feistel을 사용하는 것은 아니다.
 
 <br />
+
 ## DES 암호화 과정
 
 ![](/img/01/01-02.png)
@@ -62,6 +66,7 @@ DES 암호화 과정에서 크게 **3가지**를 보면된다.
 - Round-Key Generator
 
 <br />
+
 ## Initial Permutation & Final Permutation
 
 P-box (Permutation box)라고 부르는데 특히 이 과정에서는 **암호화가 일어나지 않는다**. <br />
@@ -84,10 +89,13 @@ P-box (Permutation box)라고 부르는데 특히 이 과정에서는 **암호�
 ![](/img/01/01-04.png)
 
 <br />
+
 ## Round Function
 
-실제 암호화는 이 과정에서 일어난다.<br>
-$$L_x = R_{x-1}$$ <br />
+실제 암호화는 이 과정에서 일어난다.
+
+$$L_x = R_{x-1}$$
+
 $$R_x = L_{x-1} \oplus \!\, F(R_{x-1}, K_x)$$
 
 - Rx : x단계의 하위(R) 결과물
@@ -121,7 +129,7 @@ $$R_x = L_{x-1} \oplus \!\, F(R_{x-1}, K_x)$$
 
 ![](/img/01/01-07.png)
 
-확장된 48bit와 Round-key Generator에서 만든 Round key와 XOR을 한 결과 값 48bit는 S-box라는 곳에서 Compression(압축)이 일어난다.
+확장된 48bit와 Round-key Generator에서 만든 Round key와 **XOR을 한 결과 값 48bit**는 S-box라는 곳에서 `Compression(압축)`이 일어난다.
 
 ![](/img/01/01-08.png)
 
@@ -129,11 +137,21 @@ $$R_x = L_{x-1} \oplus \!\, F(R_{x-1}, K_x)$$
 
 48bit를 6bit 8개로 나눈다음 `S-box Table`에 의해 4bit로 압축이된다.
 
-마지막으로 Straight P-box에서 좌, 우 Swap을 진행해줌으로써 한 Round가 끝난다.
+S-box 연산의 과정을 시각화로 표현한다면 그렇다는 것이다. 실제 `S-box`에서 bit연산이 어떻게 되는지 설명하겠다.
+
+![](/img/01/01-14.jpg)
+
+위의 Table은 Round 1의 S-box table이다. 만약 **011011**의 6bit 값이 입력이 됬다고 하자, 행을 먼저 구해야하는데 첫번째 bit와 마지막 bit가 행이된다. 01 = 1
+열은 행을 제외한 나머지 bit이다. 1101 = 13이다.
+
+이제 S-box Table에서 해당값 (1, 13)을 찾아보면 9가되고, **1001**이된다. **011011 => 1001**로 6bit가 4bit로 압축이되었다.
+
+마지막으로 Straight P-box에서 P-box Table에 의해 bit치환 한 후 해당 Round가 끝난다.
 
 이러한 과정을 16번 반복한다.
 
 <br />
+
 ## Round-Key Generator
 
 이 과정에서는 DES에서 사용하는 56bit 암호 키(대칭키)를 16개의 Subkey로 생성한다. (Round Function에서 사용할 암호 키)
@@ -144,11 +162,25 @@ $$R_x = L_{x-1} \oplus \!\, F(R_{x-1}, K_x)$$
 
 Round-key Generator에서 Round key를 생성은 3단계로 이루어진다.
 
-- **1단계** 56bit key를 Key swap 연산을 통해 두 개의 28bit block으로 나눈다.
-- **2단계** 두 개의 블록은 1, 2, 9 ,16Round에는 1bit 왼쪽 순환이동을 하고, 나머지 Round에는 2bit 순환이동을 한다.
-- **3단계** 각 28bit block은 Compression(압축) 전치를 통해 24bit block이 되며, 두 개의 block이 결합되어 48bit Round Key가 생성된다.
+- **1단계** Key와 Parity bit를 포함한 64bit 값을 입력받는데 `Parity Drop(PC1)`과정에서 PC1 테이블에 의해 8의 배수가 버려진다. 따라서 이 연산 결과 값으로 56bit 암호키를 얻게된다. (64bit -> 56bit)
+> 아래 테이블 참조
+
+![](/img/01/01-15.png)
+
+- **2단계** 56bit key를 Key swap 연산을 통해 두 개의 28bit block으로 나눈다.
+
+- **3단계** 두 개의 블록은 1, 2, 9 ,16의 Round Key(Subkey)를 만들 때에는 1bit 왼쪽 순환이동을 하고, 나머지 RoundKey를 만드는 경우는 2bit 순환이동을 한다.
+> 아래 테이블 참조
+
+![](/img/01/01-16.png)
+
+- **4단계** 각 28bit block은 `PC2연산` - Compression(압축) 전치를 통해 합쳐진 56bit가 RoundFunction에서 사용될 48bit Subkey가 된다. 이때도 1단계와 마찬가지로 입력 값의 8배수 bit는 버려진다. (56bit -> 48bit)
+> 아래 테이블 참조
+
+![](/img/01/01-17.png)
 
 <br />
+
 ## DES의 특성
 
 **1. Avalanche effect (눈사태 효과)** - 키의 작은 변화가 결과값에 큰 영향을 미치는 효과를 뜻한다. DES는 이 특징에 대해 강력함을 보였다.
@@ -162,10 +194,12 @@ Round-key Generator에서 Round key를 생성은 3단계로 이루어진다.
 아무튼 1998년에 DES공격장치가 **Brutal Force Attack(무차별 공격)**방식으로 2일만에 암호를 탈취당했으니 현재는 사용하지 말아야 할 암호이지만 오랜시간 쓰였던 암호이었던 만큼 강화된 다중 DES (ex, 3-DES)를 사용하는 곳이 많으므로 (비용문제 등으로) 알아두는 것이 좋을 듯 하다.
 
 <br>
+
 **연관 게시글** <br>
 [DES - 소스코드 분석](https://dongw00.github.io/Cryptography-DES-%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C%EB%B6%84%EC%84%9D)
 
 <br>
+
 **참고자료**<br />
 [Data Encryption Standard](https://www.tutorialspoint.com/cryptography/data_encryption_standard.htm)
 

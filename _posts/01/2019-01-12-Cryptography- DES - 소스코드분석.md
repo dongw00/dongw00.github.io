@@ -150,6 +150,8 @@ private static long[] createSubkeys(long key) {
 
 1, 2, 9, 16 Round에서는 1bit 왼쪽 순환이동을 하고 나머지 Round에서는 2bit씩 순환이동을 한다.
 
+![](/img/01/01-16.png)
+
 <br />
 
 ## DES 암호화 Test Function
