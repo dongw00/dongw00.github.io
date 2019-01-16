@@ -89,7 +89,7 @@ AES 알고리즘은 안정성을 제공하기위해 `대치`(Substitution), `치
 1. **SubBytes (Byte Substitution)**
    16byte입력에서 각 byte를 4bit씩 2개의 16진수로 계산하여 왼쪽 4bit를 S-box의 행, 오른쪽 4bit를 열로 S-box Table을 읽어서 변환한다.
 
-![](/img/01/01-20.png)
+    ![](/img/01/01-20.png)
 
 2. **ShiftRows**
    4개의 행은 각각 왼쪽으로 Shift되는데 행의 첫번째 값은 그 행의 맨 오른쪽 값으로 이동한다.
@@ -99,7 +99,7 @@ AES 알고리즘은 안정성을 제공하기위해 `대치`(Substitution), `치
    - 세 번째 행은 두 자리 왼쪽으로 Shift된다.
    - 마지막 행은 세 자리 왼쪽으로 Shift된다.
 
-> 이때 byte안의 bit는 그대로 두고 byte를 교환한다. (byte-exchange transformation)
+    > 이때 byte안의 bit는 그대로 두고 byte를 교환한다. (byte-exchange transformation)
 
 3. **MixColumns**
    행렬에서의 열은 동일한 선형변환([수학식](https://en.wikipedia.org/wiki/Rijndael_MixColumns))에 의해 변화된다. **열 단위 연산을 수행**한다.
@@ -107,13 +107,13 @@ AES 알고리즘은 안정성을 제공하기위해 `대치`(Substitution), `치
 
    > 마지막 Round에서는 해당 연산(MixColumns)이 수행되지 않는다.
 
-![](/img/01/01-21.png)
+    ![](/img/01/01-21.png)
 
 4. **Add Round Key**
    한 번에 한 열씩 수행을 하게 된다. (MixColumns와 유사) 각 State 열 행렬에 Round Key word를 더한다.
    1State 행렬(128bit)과 128bit Round Key가 XOR연산이 되는 것이라고 생각하면된다.
 
-![](/img/01/01-22.png)
+    ![](/img/01/01-22.png)
 
 <br />
 
