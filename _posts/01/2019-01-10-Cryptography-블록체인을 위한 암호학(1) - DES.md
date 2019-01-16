@@ -49,7 +49,7 @@ DES는 대칭 키 알고리즘에 속하면서 `블록단위 암호화 방식`�
 
 특정 계산 함수를 `Round Function`이라고 한다.
 
-> 블록단위 암호화라고해서 모두가 Feistel을 사용하는 것은 아니다.
+> 블록단위 암호화라고해서 모두가 Feistel을 사용하는 것은 아니다. AES의 경우 SPN을 사용함
 
 <br />
 
@@ -163,21 +163,19 @@ S-box 연산의 과정을 시각화로 표현한다면 그렇다는 것이다. �
 Round-key Generator에서 Round key를 생성은 3단계로 이루어진다.
 
 - **1단계** Key와 Parity bit를 포함한 64bit 값을 입력받는데 `Parity Drop(PC1)`과정에서 PC1 테이블에 의해 8의 배수가 버려진다. 따라서 이 연산 결과 값으로 56bit 암호키를 얻게된다. (64bit -> 56bit)
-> 아래 테이블 참조
 
-![](/img/01/01-15.png)
+  ![](/img/01/01-15.png)
 
 - **2단계** 56bit key를 Key swap 연산을 통해 두 개의 28bit block으로 나눈다.
 
 - **3단계** 두 개의 블록은 1, 2, 9 ,16의 Round Key(Subkey)를 만들 때에는 1bit 왼쪽 순환이동을 하고, 나머지 RoundKey를 만드는 경우는 2bit 순환이동을 한다.
-> 아래 테이블 참조
 
-![](/img/01/01-16.png)
+  ![](/img/01/01-16.png)
 
 - **4단계** 각 28bit block은 `PC2연산` - Compression(압축) 전치를 통해 합쳐진 56bit가 RoundFunction에서 사용될 48bit Subkey가 된다. 이때도 1단계와 마찬가지로 입력 값의 8배수 bit는 버려진다. (56bit -> 48bit)
 > 아래 테이블 참조
 
-![](/img/01/01-17.png)
+  ![](/img/01/01-17.png)
 
 <br />
 

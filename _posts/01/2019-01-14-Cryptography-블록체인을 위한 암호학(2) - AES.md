@@ -119,7 +119,7 @@ AES 알고리즘은 안정성을 제공하기위해 `대치`(Substitution), `치
 
 ## Key Expassion (Key Schedule)
 
-AES의 `Key scheduling`은 `Key Expanssion`과 `RoundKey Selection`의 두 부분으로 이루어져있다.
+AES의 `Key scheduling`은 1) `Key Expanssion`과 2) `RoundKey Selection`의 두 부분으로 이루어져있다.
 
 각 Round에 사용하는 Round Key를 생성하기위해 **먼저 키 확장(Key Expanssion)과정을 진행**한다.
 
