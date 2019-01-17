@@ -136,9 +136,9 @@ Word는 4개의 byte로 이루어져있는데, `Key Expanssion 루틴`은 Word�
 1. 그림에서 w0~w3는 암호 키(Cypher key)로부터 만들어진다.
 2. 나머지 워드는 아래 수학식에 의해서 계산된다.
 
-$$if(i mod 4=0) w_i=t\oplus \!\,w_{i-4}$$
+$$if(i\ mod\ 4=0) w_i=t\oplus \!\,w_{i-4}$$
 
-$$else w_i=w_{i-1}\oplus \!\,w_{i-4}$$
+$$else\ w_i=w_{i-1}\oplus \!\,w_{i-4}$$
 
 $$t = SubWord(RotWord(w_{i-1}))\oplus \!\,RCon_{i/4}$$
 
