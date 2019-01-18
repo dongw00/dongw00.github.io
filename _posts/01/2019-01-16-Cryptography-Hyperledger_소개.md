@@ -104,7 +104,6 @@ Hyperledger Fabric에서 크게 4가지 요소를 가지고 있다.
 
 1. **클라이언트 노드** <br />
     dApp이라고 생각하면된다. 사용자를 대신해서 Transaction을 생성해서 보증피어(Endorsing Peer)에게 `거래 보증을 요청`을 한다.
-
     그리고 Transaction 보증 응답을 수집한 후 `순서화 서비스 노드에 전달`한다.
 
 2. **피어(Peer)**<br />
@@ -118,4 +117,9 @@ Hyperledger Fabric에서 크게 4가지 요소를 가지고 있다.
 4. **순서화 서비스 노드(Ordering Service)**<br />
     Client에게 보증절차를 거친 Transaction을 받은 후 정해진 합의 알고리즘에 의해 Transaction이 `순서화`가 되고 새로운 블록에 담겨 `Committing Peer에게 전송`한다.
 
-[참고자료]
+<br />
+
+**[참고자료]**<br />
+[Hyperledger fabric](https://www.hyperledger.org/projects/fabric)
+
+[박승철의정보보호론 제32-11강 대칭키암호화](https://www.youtube.com/watch?v=hh9NXQQRtx4&t=123s)
