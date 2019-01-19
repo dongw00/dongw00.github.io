@@ -86,12 +86,17 @@ AES는 각 Round마다 4개의 절차를 가지고 있다.
 
 AES 알고리즘은 안정성을 제공하기위해 `대치`(Substitution), `치환`(Permutation), `섞음`(Mixing), `키 덧셈`(Key-adding) 4가지 형태의 변환을 제공한다.
 
-1. **SubBytes (Byte Substitution)**
-   16byte입력에서 각 byte를 4bit씩 2개의 16진수로 계산하여 왼쪽 4bit를 S-box의 행, 오른쪽 4bit를 열로 S-box Table을 읽어서 변환한다.
+1. **SubBytes (Substitute Byte)** <br />
+    S-box table을 이용하여 byte단위 형태로 블록을 교환한다.
+    각 byte를 4bit씩 2개의 16진수로 계산하여 왼쪽 4bit를 S-box의 행으로 오른쪽 4bit를 열로 Table을 읽는다.
 
+    ![](/img/01/01-28.png)
+    ![](/img/01/01-29.png)
     ![](/img/01/01-20.png)
 
-2. **ShiftRows**
+    > 00=63, 12=C9 이런식으로 대치(Substitution)
+
+2. **ShiftRows (Permutation)** <br />
    4개의 행은 각각 왼쪽으로 Shift되는데 행의 첫번째 값은 그 행의 맨 오른쪽 값으로 이동한다.
 
    - 첫 번째 행은 Shift되지 않는다.
@@ -101,16 +106,16 @@ AES 알고리즘은 안정성을 제공하기위해 `대치`(Substitution), `치
 
     > 이때 byte안의 bit는 그대로 두고 byte를 교환한다. (byte-exchange transformation)
 
-3. **MixColumns**
-   행렬에서의 열은 동일한 선형변환([수학식](https://en.wikipedia.org/wiki/Rijndael_MixColumns))에 의해 변화된다. **열 단위 연산을 수행**한다.
-   쉽게말해서 각각의 열을 계산해서 새로운 값을 가지는 열을 출력한다.
-
-   > 마지막 Round에서는 해당 연산(MixColumns)이 수행되지 않는다.
+3. **MixColumns** <br />
+   열 단위 연산을 수행한다. 쉽게말해서 각각의 열을 상수 행렬과 곱해서 새로운 값을 가지는 열을 반환한다.
 
     ![](/img/01/01-21.png)
+    ![](/img/01/01-30.png)
 
-4. **Add Round Key**
-   한 번에 한 열씩 수행을 하게 된다. (MixColumns와 유사) 각 State 열 행렬에 Round Key word를 더한다.
+    > 행렬의 곱셈을 이용해서 byte를 섞는다.
+
+4. **Add Round Key** <br />
+   한 번에 한 열씩 수행을 하게 된다. (MixColumns와 유사) 각 State 열 행렬에 Round Key word를 XOR 연산을 한다.
    1State 행렬(128bit)과 128bit Round Key가 XOR연산이 되는 것이라고 생각하면된다.
 
     ![](/img/01/01-22.png)
@@ -129,12 +134,15 @@ AES의 `Key scheduling`은 1) `Key Expanssion`과 2) `RoundKey Selection`의 두
 
 ![](/img/01/01-23.png)
 
-Word는 4개의 byte로 이루어져있는데, `Key Expanssion 루틴`은 Word단위로 Round Key를 생성한다. 10개의 Round로 이루어진 AES-128의 경우 44word가 필요하다.
+Word는 4개의 byte로 이루어져있는데, `Key Expanssion 루틴`은 Word단위로 Round Key를 생성한다. 10개의 Round로 이루어진 AES-128의 경우 44word가 필요하다. 
+(각 Round마다 4개의 word를 사용하는데 1 Round 들어가기 전에 한번 Round Key와 XOR하기 때문에 4word=1 Roundkey가 더 필요하다)
 
 그럼 이제 자세하게 Key Expanssion이 어떻게 일어나는지 알아보자.
 
-1. 그림에서 w0~w3는 암호 키(Cypher key)로부터 만들어진다.
-2. 나머지 워드는 아래 수학식에 의해서 계산된다.
+1. 128bit키를 4개의 word로 바꾼다. ($w_0$ ~ $w_3$)
+2. 마지막 word는 `RotWord`(left Rotate), `S-box연산`을 한 후 마지막으로 `Round 상수와 XOR연산`한다. 이 값은 t값이 되어 다음 Round word가 생겨날때 XOR을 한다.
+
+각 Round마다 반복
 
 $$if(i\ mod\ 4=0) w_i=t\oplus \!\,w_{i-4}$$
 
@@ -146,6 +154,8 @@ $$t = SubWord(RotWord(w_{i-1}))\oplus \!\,RCon_{i/4}$$
 하나의 word를 입력으로 왼쪽으로 1byte씩 이동한다.
 
 - `SubWord`는 SubBytes변환과 유사하다.4byte만 적용이 되는데, 이 루틴에서 워드의 각 byte를 S-box를 이용하여 대치(Substitution)한 후 출력한다. RCon(Round Constant)는 4byte 값으로, 가장 오른쪽의 3byte는 모두 0이다.
+
+- `RCon`은 Round 상수라고 생각하면된다.
 
 마지막으로 `Round Key Selection`은 Key Expanssion 과정에서 나온 결과를 4word = 1State 단위로 묶어서 각 Round의 Key로 사용된다.
  
