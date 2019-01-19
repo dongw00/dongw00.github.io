@@ -203,6 +203,11 @@ PKCS#7 알고리즘은 byte단위로 덧붙이며, 부족한 byte수만큼 n개�
 
 <br />
 
+**연관 게시글** <br>
+[AES - 소스코드 분석](https://dongw00.github.io/Cryptography-AES-%EC%86%8C%EC%8A%A4%EC%BD%94%EB%93%9C%EB%B6%84%EC%84%9D)
+
+<br />
+
 **참고자료**<br />
 [Wikipedia - AES](https://ko.wikipedia.org/wiki/%EA%B3%A0%EA%B8%89_%EC%95%94%ED%98%B8%ED%99%94_%ED%91%9C%EC%A4%80)
 
