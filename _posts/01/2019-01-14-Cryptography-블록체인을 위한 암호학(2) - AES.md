@@ -62,8 +62,6 @@ AES는 DES와 다르게 Feistel Network를 사용하지 않았다.
 AES의 알고리즘은 내부적으로 State라고 불리는 Byte의 2차원 배열을 사용한다.
 > (1State = 4word = 16byte = 128bit)
 
-![](/img/01/01-12.png)
-
 아래 그림은 암호문을 State로 변환하는 것을 나타낸 것이다.
 
 ![](/img/01/01-18.png)
@@ -74,8 +72,6 @@ AES의 알고리즘은 내부적으로 State라고 불리는 Byte의 2차원 배
 
 ## 각 Round 암호화 과정
 AES는 각 Round마다 4개의 절차를 가지고 있다.
-
-![](/img/01/01-13.png)
 
 ![](/img/01/01-19.png)
 
@@ -107,7 +103,7 @@ AES 알고리즘은 안정성을 제공하기위해 `대치`(Substitution), `치
     > 이때 byte안의 bit는 그대로 두고 byte를 교환한다. (byte-exchange transformation)
 
 3. **MixColumns** <br />
-   열 단위 연산을 수행한다. 쉽게말해서 각각의 열을 상수 행렬과 곱해서 새로운 값을 가지는 열을 반환한다.
+   열 단위 연산을 수행한다. 각각의 열을 상수 행렬과 곱해서 새로운 값을 가지는 열을 반환한다.
 
     ![](/img/01/01-21.png)
     ![](/img/01/01-30.png)
