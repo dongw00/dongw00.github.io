@@ -10,6 +10,8 @@ comments: true
 
 # Hyperledger Rest Server
 
+<br />
+
 ## Requirement
 
 - OS : Ubunru 14.04 / 16.04 / 18.04 LTS or higher or Mac OS
@@ -39,7 +41,7 @@ React Native와 Hyperledger Composer의 Rest server를 연결하는 작업을 �
 
 ![](/img/02/02-02.png)
 
-1) 3. CREDENTIALS FOR NETWORK ADMINISTRATOR에서 ID and Select 선택
+**3) 3. CREDENTIALS FOR NETWORK ADMINISTRATOR에서 ID and Select 선택**
 
 ![](/img/02/02-03.png)
 
@@ -153,7 +155,7 @@ snap install postman
 
 <br />
 
-# Hyperledger Composer REST API와 RN연동
+## Hyperledger Composer REST API와 RN연동
 
 예제자료 Github 주소 : [https://github.com/dongw00/Learning-ReactNative](https://github.com/dongw00/Learning-ReactNative)
 
