@@ -9,6 +9,7 @@ group :jekyll_plugins do
   gem 'github-pages'
   gem 'jekyll-seo-tag'
   gem 'rake'
+  gem 'fastimage'
 end
 
 require 'rbconfig'
