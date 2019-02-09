@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '블록체인을 위한 암호학(1) - DES'
+title: '블록체인 암호학(1) - DES'
 subtitle: '암호학 - DES'
 date: '2019-01-10'
 background: '/img/01/01-01.png'
@@ -9,9 +9,9 @@ use_math: true
 comments: true
 ---
 
-# 블록체인을 위한 암호학(1) - DES
+# 블록체인 암호학(1) - DES
 
-- [블록체인을 위한 암호학(2) - AES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%95%94%ED%98%B8%ED%95%99(2)-AES>)
+- [블록체인 암호학(2) - AES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%95%94%ED%98%B8%ED%95%99(2)-AES>)
 
 블록체인을 공부하면서 dApp을 만들어보고 비트코인이 어떤 방식으로 트랜잭션이 될까라는 부분부터 시작했었다.
 그런데 기초 암호학 지식이 없는 상태이다보니 이해하는데 상당한 시간이 걸렸고 수박 겉햛기식으로 학습이 지속되었다.
@@ -173,7 +173,8 @@ Round-key Generator에서 Round key를 생성은 3단계로 이루어진다.
   ![](/img/01/01-16.png)
 
 - **4단계** 각 28bit block은 `PC2연산` - Compression(압축) 전치를 통해 합쳐진 56bit가 RoundFunction에서 사용될 48bit Subkey가 된다. 이때도 1단계와 마찬가지로 입력 값의 8배수 bit는 버려진다. (56bit -> 48bit)
-> 아래 테이블 참조
+
+  > 아래 테이블 참조
 
   ![](/img/01/01-17.png)
 

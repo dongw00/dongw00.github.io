@@ -11,7 +11,7 @@ comments: true
 
 # DES - 소스분석
 
-- [블록체인을 위한 암호학 시리즈(1) - DES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%95%94%ED%98%B8%ED%95%99-%EC%8B%9C%EB%A6%AC%EC%A6%88(1)-DES>)
+- [블록체인 암호학(1) - DES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%95%94%ED%98%B8%ED%95%99-%EC%8B%9C%EB%A6%AC%EC%A6%88(1)-DES>)
 
 이전 포스팅에서 DES에 대해 살펴보았는데 이론적으로만 배우니 와닿지 않아서 소스코드를 분석을 해본다면 구체적으로 어떻게 동작이 될지해서 공부해보았다.
 
@@ -236,7 +236,6 @@ private static final byte[] P = { };
 
 Straight P-box 과정에서 사용하는 Table이다.
 
-
 ## Sub-key Generation
 
 **PC1 Permutation**
@@ -255,7 +254,6 @@ private static final byte[] PC2 = { };
 ```
 
 `PC2 Permutation` Compression P-box라고 보면된다. 순환 연산 이후 **48bit의 Subkey**를 받게된다.
-
 
 ## Rotations
 
