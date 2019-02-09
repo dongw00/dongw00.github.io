@@ -12,6 +12,7 @@ use_math: true
 # 블록체인 암호학(2) - AES
 
 - [블록체인 암호학(1) - DES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EC%95%94%ED%98%B8%ED%95%99(1)-DES>)
+
 - [블록체인 암호학(3) - 해시함수](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EC%95%94%ED%98%B8%ED%95%99(3)-%ED%95%B4%EC%8B%9C%ED%95%A8%EC%88%98>)
 
 이번 포스팅에서는 DES 이후 새로운 암호화 표준인 `AES`에 대해 알아보려한다.
