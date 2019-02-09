@@ -10,7 +10,7 @@ comments: true
 
 # AES - 소스분석
 
-- [블록체인 암호학(2) - AES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%95%94%ED%98%B8%ED%95%99(2)-AES>)
+- [블록체인 암호학(2) - AES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EC%95%94%ED%98%B8%ED%95%99(2)-AES>)
 
 AES 암호학 알고리즘 이론 포스팅에 이어서 Java 소스코드를 분석하면서 어떻게 실제 적용할 것인지 알아볼 것이다.
 이전 DES와는 달리 깊게 들어가진 않고 Java 라이브러리를 이용해서 대략적으로 어떻게 소스코드로 구현을 하는지 알아보려한다.

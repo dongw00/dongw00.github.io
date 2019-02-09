@@ -11,9 +11,9 @@ comments: true
 
 # 블록체인 암호학(3) - 해시함수
 
-[블록체인을 위한 암호학(1) - DES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%95%94%ED%98%B8%ED%95%99(1)-DES>)
+[블록체인을 위한 암호학(1) - DES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EC%95%94%ED%98%B8%ED%95%99(1)-DES>)
 
-[블록체인을 위한 암호학(2) - AES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%95%94%ED%98%B8%ED%95%99(1)-DES>)
+[블록체인을 위한 암호학(2) - AES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EC%95%94%ED%98%B8%ED%95%99(2)-AES>)
 
 이번 주제는 비트코인이나 이더리움을 공부하다보면 자주 접하는 단어이다. 바로 `해시`이다.
 
@@ -56,7 +56,7 @@ A와 B의 비트열의 비트 하나 혹은 두 개 정도만 다르지만 해�
 
 <br />
 
-## 역상 저항성(Preimage resistance)
+## 역상 저항성(Preimage resistance) <br />
 
 $$Hash(M) = H$$
 
