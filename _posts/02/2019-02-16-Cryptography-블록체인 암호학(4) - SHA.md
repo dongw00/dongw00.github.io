@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '블록체인 암호학(3-1) - SHA'
+title: '블록체인 암호학(4) - SHA'
 subtitle: '암호학 - SHA'
 date: '2019-02-16'
 background: '/img/01/01-01.png'
@@ -9,7 +9,7 @@ use_math: true
 comments: true
 ---
 
-# 블록체인 암호학(3-1) - SHA
+# 블록체인 암호학(4) - SHA
 
 [블록체인을 위한 암호학(1) - DES](<https://dongw00.github.io/Cryptography-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EC%95%94%ED%98%B8%ED%95%99(1)-DES>)
 
