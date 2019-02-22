@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '비트코인 Merkle Tree를 사용하는 이유'
+title: '비트코인이 Merkle Tree를 사용하는 이유'
 subtitle: '왜 비트코인은 Merkle Tree 구조를 사용할까?'
 date: '2019-02-19'
 background: '/img/tags/Xcode-bg.jpg'
